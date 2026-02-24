@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+
+        <!-- 控制台輸出 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%level] [%logger{1}] - %msg%n" />
+        </Console>
+
+        <!-- 滾動檔案（每日切檔 + 自動壓縮為 .zip） -->
+        <RollingFile
+            name="RollingFile"
+            fileName="logs/app.log"
+            filePattern="logs/app-%d{yyyy-MM-dd}.log.zip"
+            append="true">
+
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%level] [%logger{1}] - %msg%n" />
+
+            <Policies>
+                <!-- 每日自動切檔 -->
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+
+            <!-- 自動壓縮（因為 filePattern 有 .zip 就自動壓縮） -->
+        </RollingFile>
+
+    </Appenders>
+
+
+    <Loggers>
+
+        <!-- 全域 log 等級 -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+        </Root>
+
+        <!-- 你的專案 package -->
+        <Logger name="com.example.demo" level="debug" additivity="false">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+        </Logger>
+
+    </Loggers>
+
+</Configuration>
