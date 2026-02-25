@@ -1,4 +1,4 @@
-# DemoProject
+# data-sync-backend-system
 Spring Boot backend system with scheduled tasks, batch processing, and database logging. | JPA | MySQL
 
 ## 📌 專案介紹
@@ -37,6 +37,7 @@ MySQL
 
 
 ## ⚙ 技術棧
+Backend:
 
 Java 17
 
@@ -51,6 +52,10 @@ RestTemplate
 Log4j2
 
 Scheduled Task
+
+Frontend:
+
+Vue (Demo / optional)
 
 ## 🚀 核心設計重點
 1️⃣ 批次資料寫入優化
@@ -81,3 +86,10 @@ API 流程記錄 start / append / end
 修改 application.yml 連線設定
 
 mvn spring-boot:run
+
+💻 前端啟動 (選填)
+cd frontend
+
+npm install
+
+npm start
